@@ -1,0 +1,75 @@
+@import "../styles/variables.scss";
+
+.boutique {
+  &__header {
+    background-color: $background-light;
+    padding: $spacing-3xl 0;
+    text-align: center;
+
+    h1 {
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      color: $text-light;
+    }
+  }
+
+  &__filters {
+    background-color: $background-color;
+    padding: $spacing-xl 0;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    padding: $spacing-3xl 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: $spacing-xl;
+  }
+}
+
+select,
+input[type="number"] {
+  background-color: $background-light;
+  color: $text-color;
+  border: 1px solid $text-light;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: lighten($accent-color, 10%);
+    box-shadow: 0 0 5px $accent-color;
+  }
+
+  &::placeholder {
+    color: $text-light;
+  }
+}
+
+label {
+  color: $text-light;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.price-input {
+  width: 80px;
+}

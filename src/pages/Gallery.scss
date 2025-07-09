@@ -1,0 +1,28 @@
+@import "../styles/variables.scss";
+
+.gallery {
+  &__header {
+    background-color: $background-light;
+    padding: $spacing-3xl 0;
+    text-align: center;
+
+    h1 {
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      color: $text-light;
+    }
+  }
+
+  &__content {
+    padding: $spacing-3xl 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: $spacing-xl;
+  }
+}

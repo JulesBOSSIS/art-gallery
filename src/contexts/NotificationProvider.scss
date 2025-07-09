@@ -1,0 +1,133 @@
+@import "../styles/variables.scss";
+
+.notification-container {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 10000;
+  pointer-events: none;
+
+  @media (max-width: $breakpoint-md) {
+    right: 10px;
+    left: 10px;
+    top: 80px;
+  }
+}
+
+.notification {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-xl;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  max-width: 400px;
+  min-width: 300px;
+  pointer-events: auto;
+  cursor: pointer;
+  border-left: 4px solid;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: $breakpoint-md) {
+    min-width: auto;
+    max-width: none;
+  }
+
+  &--success {
+    border-left-color: #10b981;
+
+    .notification__icon {
+      background: #10b981;
+      color: white;
+    }
+  }
+
+  &--error {
+    border-left-color: #ef4444;
+
+    .notification__icon {
+      background: #ef4444;
+      color: white;
+    }
+  }
+
+  &--info {
+    border-left-color: #3b82f6;
+
+    .notification__icon {
+      background: #3b82f6;
+      color: white;
+    }
+  }
+
+  &--warning {
+    border-left-color: #f59e0b;
+
+    .notification__icon {
+      background: #f59e0b;
+      color: white;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+  }
+}
+
+.notification__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  flex-shrink: 0;
+}
+
+.notification__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification__title {
+  margin: 0 0 $spacing-xs 0;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $text-color;
+  line-height: 1.4;
+}
+
+.notification__message {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: $text-light;
+  line-height: 1.4;
+}
+
+.notification__close {
+  background: none;
+  border: none;
+  font-size: $font-size-xl;
+  color: $text-light;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: $text-color;
+  }
+}

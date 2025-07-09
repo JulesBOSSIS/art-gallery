@@ -1,0 +1,104 @@
+@import "../../styles/variables.scss";
+
+.cart-icon {
+  position: relative;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm;
+    border-radius: $border-radius-md;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+    }
+  }
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+    color: $primary-color;
+    transition: color 0.3s ease;
+
+    .cart-icon__container:hover & {
+      color: $secondary-color;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: linear-gradient(135deg, $secondary-color 0%, #ff6b6b 100%);
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    box-shadow: 0 2px 8px rgba($secondary-color, 0.3);
+    border: 2px solid white;
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: $spacing-sm;
+    background: white;
+    border-radius: $border-radius-md;
+    padding: $spacing-sm $spacing-md;
+    box-shadow: $shadow-lg;
+    border: 1px solid $border-color;
+    white-space: nowrap;
+    z-index: 1000;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      right: 12px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid white;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      right: -50px;
+
+      &::before {
+        right: 56px;
+      }
+    }
+  }
+
+  &__count {
+    display: block;
+    font-size: $font-size-sm;
+    color: $text-color;
+    font-weight: $font-weight-medium;
+  }
+
+  &__total {
+    display: block;
+    font-size: $font-size-base;
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+    margin-top: 2px;
+  }
+}

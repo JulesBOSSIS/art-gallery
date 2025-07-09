@@ -1,0 +1,43 @@
+@import "../styles/variables.scss";
+
+.about {
+  &__header {
+    background-color: $background-light;
+    padding: $spacing-3xl 0;
+    text-align: center;
+
+    h1 {
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      color: $text-light;
+    }
+  }
+
+  &__content {
+    padding: $spacing-3xl 0;
+  }
+
+  &__story {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+      color: $primary-color;
+      margin-top: $spacing-2xl;
+      margin-bottom: $spacing-lg;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    p {
+      font-size: $font-size-lg;
+      line-height: 1.7;
+      color: $text-color;
+    }
+  }
+}

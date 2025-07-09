@@ -1,0 +1,85 @@
+@import "../../styles/variables.scss";
+
+.artist-card {
+  background-color: $background-color;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__content {
+    padding: $spacing-lg;
+  }
+
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__nationality {
+    font-size: $font-size-sm;
+    color: $text-light;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__birth-year {
+    font-size: $font-size-sm;
+    color: $text-light;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__style {
+    font-size: $font-size-sm;
+    color: $accent-color;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__bio {
+    font-size: $font-size-sm;
+    color: $text-color;
+    line-height: 1.5;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__artworks-count {
+    font-size: $font-size-sm;
+    color: $text-light;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__link {
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+    text-decoration: underline;
+    transition: color $transition-base;
+
+    &:hover {
+      color: darken($primary-color, 15%);
+    }
+  }
+}

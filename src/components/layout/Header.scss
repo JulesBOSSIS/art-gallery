@@ -1,0 +1,219 @@
+@import "../../styles/variables.scss";
+
+.header {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  &--scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    transition: padding 0.3s ease;
+  }
+
+  &__logo {
+    h1 {
+      font-size: 2rem;
+      color: $primary-color;
+      margin-bottom: 0;
+      transition: font-size 0.3s ease;
+      background: linear-gradient(
+        135deg,
+        $primary-color 0%,
+        $secondary-color 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1001;
+
+    @media (max-width: $breakpoint-md) {
+      order: 2;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: $spacing-xl;
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__mobile-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    position: relative;
+    order: 3;
+
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+    }
+
+    span {
+      width: 25px;
+      height: 3px;
+      background: $primary-color;
+      margin: 3px 0;
+      transition: 0.3s ease;
+      border-radius: 2px;
+      transform-origin: center;
+    }
+
+    &:hover span {
+      background: $secondary-color;
+    }
+
+    &--active {
+      span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+        background: $secondary-color;
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+        background: $secondary-color;
+      }
+    }
+  }
+
+  &__mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none;
+
+    @media (max-width: $breakpoint-md) {
+      display: block;
+    }
+  }
+
+  &__mobile-nav {
+    display: none;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+
+    @media (max-width: $breakpoint-md) {
+      display: block;
+    }
+
+    &--open {
+      display: block;
+    }
+
+    &-content {
+      padding: $spacing-lg 0;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    &-link {
+      display: block;
+      padding: $spacing-md $spacing-xl;
+      color: $text-color;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        transition: width 0.3s ease;
+      }
+
+      &:hover,
+      &:focus {
+        color: $primary-color;
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left-color: $primary-color;
+        transform: translateX(5px);
+
+        &::before {
+          width: 3px;
+        }
+      }
+
+      &:active {
+        background-color: rgba(212, 175, 55, 0.2);
+      }
+    }
+  }
+
+  &__nav-link {
+    color: $text-color;
+    font-weight: $font-weight-medium;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-color, $secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: $primary-color;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Ajout d'un padding au body pour compenser le header fixed
+body {
+  padding-top: 80px;
+}

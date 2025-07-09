@@ -1,0 +1,158 @@
+@import "../styles/variables.scss";
+
+.artwork-detail {
+  padding-top: $spacing-xl;
+
+  &__hero {
+    padding: $spacing-3xl 0;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    align-items: start;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-2xl;
+    }
+  }
+
+  &__image {
+    position: relative;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-xl;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    padding: $spacing-lg;
+  }
+
+  &__title {
+    font-size: $font-size-4xl;
+    color: $primary-color;
+    margin-bottom: $spacing-md;
+    font-weight: $font-weight-bold;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__artist {
+    font-size: $font-size-xl;
+    color: $text-light;
+    margin-bottom: $spacing-xl;
+    font-style: italic;
+
+    &-link {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: $font-weight-semibold;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $secondary-color;
+        transform: translateY(-1px);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, $primary-color, $secondary-color);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    &-name {
+      color: $primary-color;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__specs {
+    background: linear-gradient(
+      135deg,
+      $background-light 0%,
+      rgba(248, 249, 250, 0.5) 100%
+    );
+    padding: $spacing-lg;
+    border-radius: $border-radius-md;
+    margin-bottom: $spacing-xl;
+    border-left: 4px solid $primary-color;
+
+    .spec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $spacing-sm 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      strong {
+        color: $primary-color;
+        font-weight: $font-weight-semibold;
+      }
+
+      .price {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $secondary-color;
+      }
+    }
+  }
+
+  &__description {
+    font-size: $font-size-lg;
+    line-height: 1.7;
+    color: $text-color;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+    }
+  }
+
+  &__not-found {
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    h1 {
+      color: $primary-color;
+      margin-bottom: $spacing-lg;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      color: $text-light;
+      margin-bottom: $spacing-xl;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@import "../../styles/variables.scss";
+
+.artwork-card {
+  background-color: $background-color;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+  }
+
+  &__image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(212, 175, 55, 0.15);
+    backdrop-filter: blur(1px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(212, 175, 55, 0.8);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+  }
+
+  &__content {
+    padding: $spacing-lg;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+    transition: color 0.3s ease;
+  }
+
+  &__artist {
+    font-size: $font-size-sm;
+    color: $text-light;
+    margin-bottom: $spacing-xs;
+    transition: color 0.3s ease;
+  }
+
+  &__year {
+    font-size: $font-size-sm;
+    color: $text-light;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__medium {
+    font-size: $font-size-sm;
+    color: $text-color;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__dimensions {
+    font-size: $font-size-sm;
+    color: $text-light;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__price {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $secondary-color;
+    margin-bottom: $spacing-lg;
+    transition: transform 0.3s ease;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  &:hover &__actions {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover &__price {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
